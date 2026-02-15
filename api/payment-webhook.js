@@ -13,7 +13,29 @@ const db = admin.firestore();
 // Initialize Stripe
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '');
 
+// Disable automatic body parsing so we can access raw body
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
+// Helper to read raw body from request
+async function getRawBody(req) {
+  return new Promise((resolve, reject) => {
+    let data = '';
+    req.on('data', chunk => {
+      data += chunk;
+    });
+    req.on('end', () => {
+      resolve(data);
+    });
+    req.on('error', reject);
+  });
+}
+
 export default async function handler(req, res) {
+  // Only handle POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -29,7 +51,11 @@ export default async function handler(req, res) {
   }
 
   try {
-    const event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
+    // Get raw body for Stripe signature verification
+    const rawBody = await getRawBody(req);
+    console.log('📦 [webhook] Raw body received, length:', rawBody.length);
+
+    const event = stripe.webhooks.constructEvent(rawBody, sig, webhookSecret);
     console.log('✅ [webhook] Event verified:', event.type);
 
     if (event.type === 'payment_intent.succeeded') {
