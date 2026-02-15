@@ -9,9 +9,9 @@
   },
   "build": {
     "env": {
-      "STRIPE_SECRET_KEY": "@stripe_secret_key",
-      "STRIPE_WEBHOOK_SECRET": "@stripe_webhook_secret",
-      "FIREBASE_SERVICE_ACCOUNT": "@firebase_service_account"
+      "STRIPE_SECRET_KEY": "@STRIPE_SECRET_KEY",
+      "STRIPE_WEBHOOK_SECRET": "@STRIPE_WEBHOOK_SECRET",
+      "FIREBASE_SERVICE_ACCOUNT": "@FIREBASE_SERVICE_ACCOUNT"
     }
   }
 }
