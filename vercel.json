@@ -3,15 +3,7 @@
   "functions": {
     "api/payment-webhook.js": {
       "memory": 1024,
-      "maxDuration": 30,
-      "includeFiles": "**"
-    }
-  },
-  "build": {
-    "env": {
-      "STRIPE_SECRET_KEY": "@STRIPE_SECRET_KEY",
-      "STRIPE_WEBHOOK_SECRET": "@STRIPE_WEBHOOK_SECRET",
-      "FIREBASE_SERVICE_ACCOUNT": "@FIREBASE_SERVICE_ACCOUNT"
+      "maxDuration": 30
     }
   }
 }
