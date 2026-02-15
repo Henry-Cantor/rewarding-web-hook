@@ -1,0 +1,18 @@
+{
+  "name": "rewarding-webhook",
+  "version": "1.0.0",
+  "description": "Stripe payment webhook for Rewarding app",
+  "type": "module",
+  "main": "api/payment-webhook.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel deploy"
+  },
+  "dependencies": {
+    "stripe": "^15.0.0",
+    "firebase-admin": "^12.0.0"
+  },
+  "devDependencies": {
+    "vercel": "^34.0.0"
+  }
+}
