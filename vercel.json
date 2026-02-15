@@ -5,10 +5,5 @@
       "memory": 1024,
       "maxDuration": 30
     }
-  },
-  "env": [
-    "STRIPE_SECRET_KEY",
-    "STRIPE_WEBHOOK_SECRET",
-    "FIREBASE_SERVICE_ACCOUNT"
-  ]
+  }
 }
